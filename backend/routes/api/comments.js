@@ -1,10 +1,11 @@
+const router = require("express").Router();
+const mongoose = require("mongoose");
+
 /**
  * Express router for handling comments.
  * @module routes/api/comments
  */
 
-const router = require("express").Router();
-const mongoose = require("mongoose");
 const Comment = mongoose.model("Comment");
 
 module.exports = router;
@@ -20,8 +21,12 @@ module.exports = router;
  * @returns {Object} - JSON response containing the retrieved comments.
  */
 router.get("/", async (req, res) => {
-    const comments = await Comment.find();
-    res.json(comments);
+    try {
+        const comments = await Comment.find();
+        res.json(comments);
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+    }
 });
 
 /**
