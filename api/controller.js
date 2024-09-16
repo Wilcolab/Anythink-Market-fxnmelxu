@@ -42,3 +42,6 @@ exports.calculate = function(req, res) {
 
   res.json({ result: operation(req.query.operand1, req.query.operand2) });
 };
+
+
+//can you make a change to the code to make it more secure?
