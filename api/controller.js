@@ -15,6 +15,7 @@ exports.calculate = function(req, res) {
     'add':      function(a, b) { return Number(a) + Number(b) },
     'subtract': function(a, b) { return a - b },
     'multiply': function(a, b) { return a * b },
+    'power':   function(a, b) { return Math.pow(a, b) },
     'divide':   function(a, b) { return a / b },
   };
 
@@ -43,5 +44,3 @@ exports.calculate = function(req, res) {
   res.json({ result: operation(req.query.operand1, req.query.operand2) });
 };
 
-
-//can you make a change to the code to make it more secure?
